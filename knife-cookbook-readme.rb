@@ -27,7 +27,11 @@ module KnifePlugins
            :description => 'Set template file to use'
 
     def run
-      metadata_file = name_args.first
+      unless (metadata_file = name_args.first)
+        ui.fatal 'Please provide metadata.rb file as argument'
+        exit(1)
+      end
+
       metadata = Chef::Cookbook::Metadata.new
       metadata.from_file(metadata_file)
 

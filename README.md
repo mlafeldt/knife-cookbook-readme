@@ -34,7 +34,7 @@ Usage
 
 
 Note that the command will write the generated output to STDOUT. Simply redirect
-the output to `README.md` to write it to a file.
+the output to `README.md` to write to a file.
 
 
 License

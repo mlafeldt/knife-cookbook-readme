@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# Chef knife plugin to generate README.md from metadata.rb
+# Knife plugin to generate skeleton README.md from a cookbook's metadata.rb file
 #
 # Copyright (C) 2012 Mathias Lafeldt <mathias.lafeldt@gmail.com>
 #
@@ -34,14 +34,14 @@ module KnifePlugins
            :long        => '--constraints',
            :boolean     => true,
            :default     => false,
-           :description => 'Show version constraints for platforms and dependencies'
+           :description => 'Include version constraints for platforms and dependencies'
 
     option :template_file,
            :short       => '-t',
            :long        => '--template FILE',
            :default     => File.expand_path("../README.md.erb",
                                             Pathname.new(__FILE__).realpath),
-           :description => 'Set template file to use'
+           :description => 'Set template file used to render README.md'
 
     def run
       unless (metadata_file = name_args.first)

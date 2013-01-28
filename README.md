@@ -1,7 +1,15 @@
 knife-cookbook-readme
 =====================
 
-Knife plugin to generate skeleton `README.md` from a cookbook's `metadata.rb` file
+This is a Knife plugin to generate a skeleton `README.md` file from a cookbook's
+`metadata.rb` file.
+
+The plugin helps to
+
+- create the first bits of documentation you can build upon
+- write documentation that is consistent among your or your team's cookbooks
+- implement the [DRY/SPOT](http://c2.com/cgi/wiki?DontRepeatYourself) rule
+  (`metadata.rb` is the authoritative source of information)
 
 
 Installation

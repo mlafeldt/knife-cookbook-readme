@@ -52,16 +52,16 @@ module KnifePlugins
       metadata = Chef::Cookbook::Metadata.new
       metadata.from_file(metadata_file)
 
-      controller = Controller.new(metadata, config[:constraints])
+      model = ReadmeModel.new(metadata, config[:constraints])
       template = File.read(config[:template_file])
       eruby = Erubis::Eruby.new(template)
-      result = eruby.result(controller.get_binding)
+      result = eruby.result(model.get_binding)
 
       ui.output(result)
     end
   end
 
-  class Controller
+  class ReadmeModel
     DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 
     def initialize(metadata, constraints=false)

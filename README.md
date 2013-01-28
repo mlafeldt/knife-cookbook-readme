@@ -64,6 +64,6 @@ limitations under the License.
 Contact
 -------
 
-* Web: <https://github.com/mlafeldt/knife-cookbook-readme>
+* Web: <http://mlafeldt.github.com/knife-cookbook-readme>
 * Mail: <mathias.lafeldt@gmail.com>
 * Twitter: [@mlafeldt](https://twitter.com/mlafeldt)

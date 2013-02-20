@@ -15,12 +15,16 @@ The plugin helps to
 Installation
 ------------
 
-Clone the repository and copy the plugin files to your home chef directory:
+You can install the plugin via RubyGems:
+
+    $ gem install knife-cookbook-readme
+
+Alternatively, you can install the plugin from source:
 
     $ git clone git://github.com/mlafeldt/knife-cookbook-readme.git
     $ cd knife-cookbook-readme/
-    $ mkdir -p ~/.chef/plugins/knife/
-    $ cp knife-cookbook-readme.rb README.md.erb ~/.chef/plugins/knife/
+    $ bundle install
+    $ bundle exec rake install
 
 Afterwards, the new knife command `knife cookbook readme from FILE` will be
 available.

@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 #
 # Knife plugin to generate skeleton README.md from a cookbook's metadata.rb file
 #
@@ -19,7 +18,7 @@
 
 require 'chef/knife'
 
-module KnifePlugins
+module KnifeCookbookReadme
   class CookbookReadmeFrom < Chef::Knife
     deps do
       require 'chef/cookbook/metadata'
@@ -39,7 +38,7 @@ module KnifePlugins
     option :template_file,
            :short       => '-t',
            :long        => '--template FILE',
-           :default     => File.expand_path("../README.md.erb",
+           :default     => File.expand_path("../../../../templates/README.md.erb",
                                             Pathname.new(__FILE__).realpath),
            :description => 'Set template file used to render README.md'
 

@@ -3,6 +3,7 @@ PATH
   specs:
     knife-cookbook-readme (0.1.0)
       chef (< 11.0.0)
+      erubis
 
 GEM
   remote: https://rubygems.org/

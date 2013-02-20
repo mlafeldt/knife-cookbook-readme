@@ -1,12 +1,12 @@
 require 'chef/knife'
-require 'knife_cookbook_readme/readme_model'
+require 'pathname'
 
 module KnifeCookbookReadme
   class CookbookReadmeFrom < Chef::Knife
     deps do
       require 'chef/cookbook/metadata'
       require 'erubis'
-      require 'pathname'
+      require 'knife_cookbook_readme/readme_model'
     end
 
     banner 'knife cookbook readme from FILE (options)'

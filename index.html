@@ -45,12 +45,17 @@
 (<code>metadata.rb</code> is the authoritative source of information)</li>
 </ul><h2>Installation</h2>
 
-<p>Clone the repository and copy the plugin files to your home chef directory:</p>
+<p>You can install the plugin via RubyGems:</p>
+
+<pre><code>$ gem install knife-cookbook-readme
+</code></pre>
+
+<p>Alternatively, you can install the plugin from source:</p>
 
 <pre><code>$ git clone git://github.com/mlafeldt/knife-cookbook-readme.git
 $ cd knife-cookbook-readme/
-$ mkdir -p ~/.chef/plugins/knife/
-$ cp knife-cookbook-readme.rb README.md.erb ~/.chef/plugins/knife/
+$ bundle install
+$ bundle exec rake install
 </code></pre>
 
 <p>Afterwards, the new knife command <code>knife cookbook readme from FILE</code> will be

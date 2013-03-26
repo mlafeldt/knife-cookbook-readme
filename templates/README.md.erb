@@ -76,6 +76,14 @@ Resources
 <% end %>
 <% end %>
 
+<% unless resource.attributes.empty? %>
+### Attribute Parameters
+
+<% resource.attributes.each do |attribute| %>
+- <%= attribute %>: <%= resource.attribute_description(attribute) %>
+<% end %>
+<% end %>
+
 <% end %>
 
 <% end %>

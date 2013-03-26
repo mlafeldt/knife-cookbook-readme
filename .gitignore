@@ -16,3 +16,8 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Ignore Intellij artifacts
+/*.iml
+/*.ipr
+/*.iws

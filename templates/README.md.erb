@@ -62,6 +62,24 @@ Recipes
 *No recipes defined*
 <% end %>
 
+<% unless resources.empty? %>
+Resources
+=========
+<% resources.each do |resource| %>
+# <%= resource.native_resource.resource_name %>
+
+<% unless resource.actions.empty? %>
+### Actions
+
+<% resource.actions.each do |action| %>
+- <%= action %>: <%= resource.action_description(action) %><% if resource.default_action == action %>Default Action.<% end %>
+<% end %>
+<% end %>
+
+<% end %>
+
+<% end %>
+
 License and Author
 ==================
 

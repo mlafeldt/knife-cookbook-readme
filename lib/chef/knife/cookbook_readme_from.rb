@@ -7,6 +7,7 @@ module KnifeCookbookReadme
       require 'chef/cookbook/metadata'
       require 'erubis'
       require 'knife_cookbook_readme/readme_model'
+      require 'knife_cookbook_readme/resource_model'
     end
 
     banner 'knife cookbook readme from FILE (options)'
@@ -31,10 +32,18 @@ module KnifeCookbookReadme
         exit(1)
       end
 
+      cookbook_dir = File.dirname(metadata_file)
+
       metadata = Chef::Cookbook::Metadata.new
       metadata.from_file(metadata_file)
 
-      model = ReadmeModel.new(metadata, config[:constraints])
+      resources = []
+      Dir["#{cookbook_dir}/resources/*.rb"].each do |resource_filename|
+        resources << ResourceModel.new(metadata.name, resource_filename)
+      end
+
+      model = ReadmeModel.new(metadata, config[:constraints], resources)
+
       template = File.read(config[:template_file])
       eruby = Erubis::Eruby.new(template)
       result = eruby.result(model.get_binding)

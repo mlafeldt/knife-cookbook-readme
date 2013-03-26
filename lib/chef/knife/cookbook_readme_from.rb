@@ -19,6 +19,12 @@ module KnifeCookbookReadme
            :default     => false,
            :description => 'Include version constraints for platforms and dependencies'
 
+    option :output_file,
+           :short       => '-o',
+           :long        => '--output-file FILE',
+           :default     => 'README.md',
+           :description => 'Set the output file to render to relative to metadata.rb. Defaults to README.md'
+
     option :template_file,
            :short       => '-t',
            :long        => '--template FILE',
@@ -48,7 +54,9 @@ module KnifeCookbookReadme
       eruby = Erubis::Eruby.new(template)
       result = eruby.result(model.get_binding)
 
-      ui.output(result)
+      File.open("#{cookbook_dir}/#{config[:output_file]}",'wb') do |f|
+        f.write result
+      end
     end
   end
 end

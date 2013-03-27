@@ -36,7 +36,7 @@ module KnifeCookbookReadme
     end
 
     def recipes
-      @metadata.recipes
+      @recipes
     end
 
     def maintainer
@@ -45,10 +45,6 @@ module KnifeCookbookReadme
 
     def maintainer_email
       @metadata.maintainer_email
-    end
-
-    def copyright_year
-      Time.now.year
     end
 
     def license

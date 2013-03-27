@@ -12,7 +12,7 @@ module KnifeCookbookReadme
     end
 
     def top_level_description(section)
-      (top_level_descriptions[section.to_s] || []).join("\n")
+      (top_level_descriptions[section.to_s] || []).join("\n").gsub(/\n+$/m,"\n")
     end
 
     def top_level_descriptions
@@ -24,7 +24,7 @@ module KnifeCookbookReadme
     def load_descriptions
       current_section = 'main'
       extract_description.each_line do |line|
-        if /^ *\@section ([^ ]*) *$/ =~ line
+        if /^ *\@section (.*)$/ =~ line
           current_section = $1.strip
         else
           lines = (top_level_descriptions[current_section] || [])

@@ -69,7 +69,7 @@ module KnifeCookbookReadme
     end
 
     def top_level_description(section)
-      (top_level_descriptions[section.to_s] || []).join("\n")
+      (top_level_descriptions[section.to_s] || []).join("\n").gsub(/\n+$/m,"\n")
     end
 
     def top_level_descriptions
@@ -81,11 +81,11 @@ module KnifeCookbookReadme
     def load_descriptions
       current_section = 'main'
       @native_resource.description.each_line do |line|
-        if /^ *\@action ([^ ]*) (.*)$/ =~ line
+        if /^ *\@action *([^ ]*) (.*)$/ =~ line
           action_descriptions[$1] = $2.strip
-        elsif /^ *\@attribute ([^ ]*) (.*)$/ =~ line
+        elsif /^ *\@attribute *([^ ]*) (.*)$/ =~ line
           attribute_descriptions[$1] = $2.strip
-        elsif /^ *\@section ([^ ]*) *$/ =~ line
+        elsif /^ *\@section (.*)$/ =~ line
           current_section = $1.strip
         else
           lines = (top_level_descriptions[current_section] || [])

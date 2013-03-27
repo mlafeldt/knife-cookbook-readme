@@ -1,4 +1,4 @@
-module KnifeCookbookReadme
+module KnifeCookbookDoc
   class ReadmeModel
     DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 

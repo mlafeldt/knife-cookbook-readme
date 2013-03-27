@@ -1,5 +1,5 @@
-knife-cookbook-readme
-=====================
+knife-cookbook-doc
+==================
 
 This is a Knife plugin to generate a skeleton `README.md` file from a cookbook's
 `metadata.rb` file.
@@ -17,36 +17,30 @@ Installation
 
 You can install the plugin via RubyGems:
 
-    $ gem install knife-cookbook-readme
+    $ gem install knife-cookbook-doc
 
 Alternatively, you can install the plugin from source:
 
-    $ git clone git://github.com/mlafeldt/knife-cookbook-readme.git
-    $ cd knife-cookbook-readme/
+    $ git clone git://github.com/realityforge/knife-cookbook-doc.git
+    $ cd knife-cookbook-doc/
     $ bundle install
     $ bundle exec rake install
 
-Afterwards, the new knife command `knife cookbook readme from FILE` will be
-available.
+Afterwards, the new knife command `knife cookbook doc DIR` will be available.
 
 
 Usage
 -----
 
-    knife cookbook readme from FILE (options)
+    knife cookbook doc COOKBOOK_DIR (options)
 
-        -c, --constraints                Include version constraints for platforms and dependencies
+        -o, --output-file FILE           Set the output file to render to relative to cookbook dir. Defaults to README.md
         -t, --template FILE              Set template file used to render README.md
 
     Examples:
 
-        knife cookbook readme from path/to/metadata.rb
-        knife cookbook readme from path/to/metadata.rb --constraints >README.md
-        knife cookbook readme from path/to/metadata.rb --template README.md.erb
-
-
-Note that the command will write the generated output to STDOUT. Simply redirect
-the output to `README.md` to write to a file.
+        knife cookbook readme from path/to/cookbook
+        knife cookbook readme from path/to/cookbook --template README.md.erb
 
 
 License

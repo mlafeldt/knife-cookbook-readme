@@ -1,4 +1,4 @@
-module KnifeCookbookReadme
+module KnifeCookbookDoc
   class RecipeModel
 
     attr_reader :name

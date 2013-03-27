@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/knife_cookbook_readme/version', __FILE__)
+require File.expand_path('../lib/knife_cookbook_doc/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.authors       = ['Mathias Lafeldt']

@@ -1,4 +1,4 @@
-module KnifeCookbookReadme
+module KnifeCookbookDoc
   class ResourceModel
 
     attr_reader :native_resource

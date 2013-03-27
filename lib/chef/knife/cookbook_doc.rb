@@ -1,17 +1,17 @@
 require 'chef/knife'
 require 'pathname'
 
-module KnifeCookbookReadme
-  class CookbookReadmeFrom < Chef::Knife
+module KnifeCookbookDoc
+  class CookbookDoc < Chef::Knife
     deps do
       require 'chef/cookbook/metadata'
       require 'erubis'
-      require 'knife_cookbook_readme/readme_model'
-      require 'knife_cookbook_readme/recipe_model'
-      require 'knife_cookbook_readme/resource_model'
+      require 'knife_cookbook_doc/readme_model'
+      require 'knife_cookbook_doc/recipe_model'
+      require 'knife_cookbook_doc/resource_model'
     end
 
-    banner 'knife cookbook readme from DIR (options)'
+    banner 'knife cookbook doc DIR (options)'
 
     option :constraints,
            :short       => '-c',

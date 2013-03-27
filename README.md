@@ -59,9 +59,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-Contact
--------
+Credit
+------
 
-* Web: <http://mlafeldt.github.com/knife-cookbook-readme>
-* Mail: <mathias.lafeldt@gmail.com>
-* Twitter: [@mlafeldt](https://twitter.com/mlafeldt)
+The plugin was originally written by Mathias Lafeldt as a way to create
+initial README.md from the metadata.rb. It was subsequently rewritten by
+Peter Donald to gather information from the other files within the cookbook.
+All credit to Mathias for his wonderful idea.

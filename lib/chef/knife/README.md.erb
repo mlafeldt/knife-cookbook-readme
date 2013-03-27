@@ -16,9 +16,18 @@
 
 ## Cookbooks:
 
-<% unless dependencies.empty? %>
+<% unless dependencies.empty? && recommendations.empty? && suggestions.empty? && conflicting.empty? %>
 <% dependencies.each do |cookbook| %>
 * <%= cookbook %>
+<% end %>
+<% recommendations.each do |cookbook| %>
+* <%= cookbook %> (Recommended but not required)
+<% end %>
+<% suggestions.each do |cookbook| %>
+* <%= cookbook %> (Suggested but not required)
+<% end %>
+<% conflicting.each do |cookbook| %>
+* Conflicts with <%= cookbook %>
 <% end %>
 <% else %>
 *No dependencies defined*

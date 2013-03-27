@@ -29,6 +29,24 @@ module KnifeCookbookReadme
       end
     end
 
+    def recommendations
+      @metadata.recommendations.map do |cookbook, version|
+        format_constraint(cookbook, version)
+      end
+    end
+
+    def suggestions
+      @metadata.suggestions.map do |cookbook, version|
+        format_constraint(cookbook, version)
+      end
+    end
+
+    def conflicting
+      @metadata.conflicting.map do |cookbook, version|
+        format_constraint(cookbook, version)
+      end
+    end
+
     def attributes
       @metadata.attributes.map do |attr, options|
         name = "node['#{attr.gsub("/", "']['")}']"

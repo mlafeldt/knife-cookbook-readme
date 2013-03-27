@@ -1,10 +1,8 @@
-Description
-===========
+# Description
 
 <%= description %>
 
-Requirements
-============
+# Requirements
 
 ## Platform:
 
@@ -26,8 +24,7 @@ Requirements
 *No dependencies defined*
 <% end %>
 
-Attributes
-==========
+# Attributes
 
 <% unless attributes.empty? %>
 <table>
@@ -48,8 +45,7 @@ Attributes
 *No attributes defined*
 <% end %>
 
-Recipes
-=======
+# Recipes
 
 <% unless recipes.empty? %>
 <% recipes.each do |recipe, description| %>
@@ -63,15 +59,14 @@ Recipes
 <% end %>
 
 <% unless resources.empty? %>
-Resources
-=========
+# Resources
 
 <% resources.each do |resource| %>
 * [<%= resource.name %>](#<%= resource.name %>)
 <% end %>
 
 <% resources.each do |resource| %>
-# <%= resource.name %>
+## <%= resource.name %>
 
 <%= resource.top_level_description('main') %>
 
@@ -101,8 +96,7 @@ Resources
 
 <% end %>
 
-License and Maintainer
-======================
+# License and Maintainer
 
 Maintainer:: <%= author %> (<<%= author_email %>>)
 

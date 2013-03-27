@@ -2,11 +2,22 @@ module KnifeCookbookReadme
   class ReadmeModel
     DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 
-    def initialize(metadata, constraints, recipes, resources)
-      @metadata = metadata
+    def initialize(cookbook_dir, constraints)
+
+      @metadata = Chef::Cookbook::Metadata.new
+      @metadata.from_file("#{cookbook_dir}/metadata.rb")
+
+      @resources = []
+      Dir["#{cookbook_dir}/resources/*.rb"].sort.each do |resource_filename|
+        @resources << ResourceModel.new(@metadata.name, resource_filename)
+      end
+
+      @recipes = []
+      @metadata.recipes.each do |name, description|
+        @recipes << RecipeModel.new(name, description, "#{cookbook_dir}/recipes/#{name.gsub(/^.*\:(.*)$/,'\1')}.rb")
+      end
+      @metadata = @metadata
       @constraints = constraints
-      @recipes = recipes
-      @resources = resources
     end
 
     def resources

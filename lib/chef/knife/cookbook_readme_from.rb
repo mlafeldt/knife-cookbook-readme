@@ -11,7 +11,7 @@ module KnifeCookbookReadme
       require 'knife_cookbook_readme/resource_model'
     end
 
-    banner 'knife cookbook readme from FILE (options)'
+    banner 'knife cookbook readme from DIR (options)'
 
     option :constraints,
            :short       => '-c',
@@ -33,27 +33,12 @@ module KnifeCookbookReadme
            :description => 'Set template file used to render README.md'
 
     def run
-      unless (metadata_file = name_args.first)
-        ui.fatal 'Please provide metadata.rb file as argument'
+      unless (cookbook_dir = name_args.first)
+        ui.fatal 'Please provide cookbook directory as an argument'
         exit(1)
       end
 
-      cookbook_dir = File.dirname(metadata_file)
-
-      metadata = Chef::Cookbook::Metadata.new
-      metadata.from_file(metadata_file)
-
-      resources = []
-      Dir["#{cookbook_dir}/resources/*.rb"].sort.each do |resource_filename|
-        resources << ResourceModel.new(metadata.name, resource_filename)
-      end
-
-      recipes = []
-      metadata.recipes.each do |name, description|
-        recipes << RecipeModel.new(name, description, "#{cookbook_dir}/recipes/#{name.gsub(/^.*\:(.*)$/,'\1')}.rb")
-      end
-
-      model = ReadmeModel.new(metadata, config[:constraints], recipes, resources)
+      model = ReadmeModel.new(cookbook_dir, config[:constraints])
 
       template = File.read(config[:template_file])
       eruby = Erubis::Eruby.new(template)

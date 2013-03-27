@@ -39,8 +39,8 @@ Usage
 
     Examples:
 
-        knife cookbook readme from path/to/cookbook
-        knife cookbook readme from path/to/cookbook --template README.md.erb
+        knife cookbook doc path/to/cookbook
+        knife cookbook doc path/to/cookbook --template README.md.erb
 
 Credit
 ------

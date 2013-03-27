@@ -7,6 +7,7 @@ module KnifeCookbookReadme
       require 'chef/cookbook/metadata'
       require 'erubis'
       require 'knife_cookbook_readme/readme_model'
+      require 'knife_cookbook_readme/recipe_model'
       require 'knife_cookbook_readme/resource_model'
     end
 
@@ -47,7 +48,12 @@ module KnifeCookbookReadme
         resources << ResourceModel.new(metadata.name, resource_filename)
       end
 
-      model = ReadmeModel.new(metadata, config[:constraints], resources)
+      recipes = []
+      metadata.recipes.each do |name, description|
+        recipes << RecipeModel.new(name, description, "#{cookbook_dir}/recipes/#{name.gsub(/^.*\:(.*)$/,'\1')}.rb")
+      end
+
+      model = ReadmeModel.new(metadata, config[:constraints], recipes, resources)
 
       template = File.read(config[:template_file])
       eruby = Erubis::Eruby.new(template)

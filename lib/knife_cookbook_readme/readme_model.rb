@@ -2,9 +2,10 @@ module KnifeCookbookReadme
   class ReadmeModel
     DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 
-    def initialize(metadata, constraints, resources)
+    def initialize(metadata, constraints, recipes, resources)
       @metadata = metadata
       @constraints = constraints
+      @recipes = recipes
       @resources = resources
     end
 

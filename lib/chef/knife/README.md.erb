@@ -48,17 +48,25 @@
 # Recipes
 
 <% unless recipes.empty? %>
-<% recipes.each do |recipe, description| %>
-## <%= recipe %>
-
-<%= description %>
-
+<% recipes.each do |recipe| %>
+* <% if recipe.top_level_descriptions.empty? %><%= recipe.name %><% else %>[<%= recipe.name %>](#<%= recipe.name.gsub(':','') %>)<% end %><% if recipe.short_description != '' %> - <%= recipe.short_description %><% end %>
 <% end %>
-<% else %>
+
+<% recipes.each do |recipe| -%>
+<% unless recipe.top_level_descriptions.empty? -%>
+## <%= recipe.name %>
+
+<% recipe.top_level_descriptions.keys.each do |key| -%>
+<%= recipe.top_level_description(key) %>
+<% end -%>
+<% end -%>
+
+<% end -%>
+<% else -%>
 *No recipes defined*
-<% end %>
+<% end -%>
 
-<% unless resources.empty? %>
+<% unless resources.empty? -%>
 # Resources
 
 <% resources.each do |resource| %>

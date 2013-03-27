@@ -4,8 +4,6 @@ module KnifeCookbookReadme
     attr_reader :native_resource
 
     def initialize(cookbook_name, file)
-      @file = file
-      @name = File.basename(file, '.rb')
       @native_resource = build_native_from_file(cookbook_name, file)
       load_descriptions
     end

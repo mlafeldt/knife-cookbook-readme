@@ -57,11 +57,11 @@ module KnifeCookbookReadme
       @attribute_descriptions ||= {}
     end
 
-    def tagline
-      unless @tagline
-        @tagline = first_sentence(top_level_description('main'))
+    def short_description
+      unless @short_description
+        @short_description = first_sentence(top_level_description('main'))
       end
-      @tagline
+      @short_description
     end
 
     def first_sentence(string)

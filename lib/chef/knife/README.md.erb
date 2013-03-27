@@ -62,7 +62,7 @@
 # Resources
 
 <% resources.each do |resource| %>
-* [<%= resource.name %>](#<%= resource.name %>)
+* [<%= resource.name %>](#<%= resource.name %>)<% if resource.tagline != '' %> - <%= resource.tagline %><% end %>
 <% end %>
 
 <% resources.each do |resource| %>

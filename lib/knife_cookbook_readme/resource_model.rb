@@ -63,6 +63,17 @@ module KnifeCookbookReadme
       @attribute_descriptions ||= {}
     end
 
+    def tagline
+      unless @tagline
+        @tagline = first_sentence(top_level_description('main'))
+      end
+      @tagline
+    end
+
+    def first_sentence(string)
+      string.gsub(/^([^\.]*)./, '\1').strip
+    end
+
     def top_level_description(section)
       (top_level_descriptions[section.to_s] || []).join("\n")
     end

@@ -27,11 +27,7 @@ module KnifeCookbookReadme
     end
 
     def action_description(action)
-      description = [action_descriptions[action.to_s]]
-      if default_action == action
-        description << "Default Action."
-      end
-      description.compact.join(' ')
+      action_descriptions[action.to_s]
     end
 
     def action_descriptions

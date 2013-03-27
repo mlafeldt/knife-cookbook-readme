@@ -65,8 +65,13 @@ Recipes
 <% unless resources.empty? %>
 Resources
 =========
+
 <% resources.each do |resource| %>
-# <%= resource.native_resource.resource_name %>
+* [<%= resource.name %>](#<%= resource.name %>)
+<% end %>
+
+<% resources.each do |resource| %>
+# <%= resource.name %>
 
 <%= resource.top_level_description('main') %>
 
@@ -74,7 +79,7 @@ Resources
 ### Actions
 
 <% resource.actions.each do |action| %>
-- <%= action %>: <%= resource.action_description(action) %>
+- <%= action %>: <%= resource.action_description(action) %><% if resource.default_action == action %> Default action.<% end %>
 <% end %>
 <% end %>
 
@@ -82,7 +87,7 @@ Resources
 ### Attribute Parameters
 
 <% resource.attributes.each do |attribute| %>
-- <%= attribute %>: <%= resource.attribute_description(attribute) %>
+- <%= attribute %>: <%= resource.attribute_description(attribute) %><% if resource.attribute_has_default_value?(attribute) %> Defaults to <code><%= resource.attribute_default_value(attribute).inspect %></code>.<% end %>
 <% end %>
 <% end %>
 

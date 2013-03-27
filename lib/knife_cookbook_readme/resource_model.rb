@@ -1,7 +1,6 @@
 module KnifeCookbookReadme
   class ResourceModel
 
-    attr_reader :name
     attr_reader :native_resource
 
     def initialize(cookbook_name, file)
@@ -9,6 +8,10 @@ module KnifeCookbookReadme
       @name = File.basename(file, '.rb')
       @native_resource = build_native_from_file(cookbook_name, file)
       load_descriptions
+    end
+
+    def name
+      @native_resource.resource_name
     end
 
     # Return the unique set of actions, with the default one first, if there is a default
@@ -40,15 +43,20 @@ module KnifeCookbookReadme
     end
 
     def attribute_description(attribute)
-      description = [attribute_descriptions[attribute.to_s]]
+      attribute_descriptions[attribute.to_s]
+    end
 
+    def attribute_has_default_value?(attribute)
       specification = @native_resource.attribute_specifications[attribute]
-      if specification && specification.has_key?(:default)
-        default_value = specification[:default].inspect.gsub(/(\\|\`|\*|\_|\{|\}|\[|\]|\(|\)|\#|\+|\-|\.|\!)/) { |a| "\\#{a}" }
-        description << "Defaults to #{default_value}."
-      end
+      specification && specification.has_key?(:default)
+    end
 
-      description.compact.join(' ')
+    def attribute_default_value(attribute)
+      if attribute_has_default_value?(attribute)
+        return @native_resource.attribute_specifications[attribute][:default]
+      else
+        return nil
+      end
     end
 
     def attribute_descriptions

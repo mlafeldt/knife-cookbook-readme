@@ -65,7 +65,10 @@ module KnifeCookbookReadme
     end
 
     def first_sentence(string)
-      string.gsub(/^([^\.]*)./, '\1').strip
+      string.gsub(/^([^.]*?\.)/m) do |match|
+        return $1.gsub("\n",' ').strip
+      end
+      return nil
     end
 
     def top_level_description(section)

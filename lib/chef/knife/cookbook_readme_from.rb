@@ -24,7 +24,7 @@ module KnifeCookbookReadme
            :short       => '-o',
            :long        => '--output-file FILE',
            :default     => 'README.md',
-           :description => 'Set the output file to render to relative to metadata.rb. Defaults to README.md'
+           :description => 'Set the output file to render to relative to cookbook dir. Defaults to README.md'
 
     option :template_file,
            :short       => '-t',

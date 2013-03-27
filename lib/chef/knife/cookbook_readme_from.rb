@@ -16,7 +16,7 @@ module KnifeCookbookReadme
            :short       => '-c',
            :long        => '--constraints',
            :boolean     => true,
-           :default     => false,
+           :default     => true,
            :description => 'Include version constraints for platforms and dependencies'
 
     option :output_file,

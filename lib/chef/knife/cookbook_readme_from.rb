@@ -43,7 +43,7 @@ module KnifeCookbookReadme
       metadata.from_file(metadata_file)
 
       resources = []
-      Dir["#{cookbook_dir}/resources/*.rb"].each do |resource_filename|
+      Dir["#{cookbook_dir}/resources/*.rb"].sort.each do |resource_filename|
         resources << ResourceModel.new(metadata.name, resource_filename)
       end
 

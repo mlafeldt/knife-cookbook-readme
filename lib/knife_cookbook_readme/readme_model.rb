@@ -12,12 +12,21 @@ module KnifeCookbookReadme
         @resources << ResourceModel.new(@metadata.name, resource_filename)
       end
 
+      @fragments = {}
+      Dir["#{cookbook_dir}/doc/*.md"].sort.each do |resource_filename|
+        @fragments[::File.basename(resource_filename,'.md')] = IO.read(resource_filename)
+      end
+
       @recipes = []
       @metadata.recipes.each do |name, description|
         @recipes << RecipeModel.new(name, description, "#{cookbook_dir}/recipes/#{name.gsub(/^.*\:(.*)$/,'\1')}.rb")
       end
       @metadata = @metadata
       @constraints = constraints
+    end
+
+    def fragments
+      @fragments
     end
 
     def resources

@@ -1,6 +1,10 @@
 # Description
 
+<% unless fragments['overview'] -%>
 <%= description %>
+<% else -%>
+<%= fragments['overview'] %>
+<% end -%>
 
 # Requirements
 
@@ -118,6 +122,9 @@
 <% end -%>
 
 <% end -%>
+<% end -%>
+<% fragments.keys.select {|k|k != 'overview'}.each do |key| -%>
+<%= fragments[key] %>
 <% end -%>
 # License and Maintainer
 

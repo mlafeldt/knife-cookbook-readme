@@ -40,20 +40,9 @@
 # Attributes
 
 <% unless attributes.empty? %>
-<table>
-  <tr>
-    <td>Attribute</td>
-    <td>Description</td>
-    <td>Default</td>
-  </tr>
 <% attributes.each do |name, description, default| %>
-  <tr>
-    <td><code><%= name %></code></td>
-    <td><%= description %></td>
-    <td><code><%= default %></code></td>
-  </tr>
+* `<%= name %>` - <%= description %>. Defaults to `<%= default %>`.
 <% end %>
-</table>
 <% else %>
 *No attributes defined*
 <% end %>

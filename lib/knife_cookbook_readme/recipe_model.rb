@@ -28,7 +28,7 @@ module KnifeCookbookReadme
           current_section = $1.strip
         else
           lines = (top_level_descriptions[current_section] || [])
-          lines << line.chomp
+          lines << line.gsub("\n",'')
           top_level_descriptions[current_section] = lines
         end
       end

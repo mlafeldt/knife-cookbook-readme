@@ -65,7 +65,12 @@
 <% unless recipe.top_level_descriptions.empty? -%>
 ## <%= recipe.name %>
 
-<% recipe.top_level_descriptions.keys.each do |key| -%>
+<% if recipe.top_level_description('main') != '' -%>
+<%= recipe.top_level_description('main') %>
+<% end -%>
+<% recipe.top_level_descriptions.keys.select{|k| k != 'main'}.each do |key| -%>
+### <%= key -%>
+
 <%= recipe.top_level_description(key) %>
 <% end -%>
 <% end -%>

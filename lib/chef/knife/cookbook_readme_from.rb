@@ -28,8 +28,7 @@ module KnifeCookbookReadme
     option :template_file,
            :short       => '-t',
            :long        => '--template FILE',
-           :default     => File.expand_path('../../../../templates/README.md.erb',
-                                            Pathname.new(__FILE__).realpath),
+           :default     => Pathname.new("#{File.dirname(__FILE__)}/README.md.erb").realpath,
            :description => 'Set template file used to render README.md'
 
     def run

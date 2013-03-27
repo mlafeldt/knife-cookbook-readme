@@ -39,11 +39,11 @@ module KnifeCookbookReadme
       @metadata.recipes
     end
 
-    def author
+    def maintainer
       @metadata.maintainer
     end
 
-    def author_email
+    def maintainer_email
       @metadata.maintainer_email
     end
 

@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.name          = 'knife-cookbook-readme'
-  s.require_paths = ['lib']
+  s.require_paths = %w(lib)
   s.version       = KnifeCookbookReadme::VERSION
 
   s.add_dependency 'chef'

@@ -70,9 +70,6 @@ Most importantly you should add `doc/overview.md` which will be included at the
 start of the readme. The remaining fragments will be included at the end of the
 readme.
 
-#### Step 5
-
-
 ## Installation
 
 You can install the plugin via RubyGems:

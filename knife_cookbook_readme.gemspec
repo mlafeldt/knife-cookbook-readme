@@ -2,9 +2,9 @@
 require File.expand_path('../lib/knife_cookbook_doc/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.authors       = ['Mathias Lafeldt']
-  s.email         = ['mathias.lafeldt@gmail.com']
   s.description   = %q{Knife plugin to generate README.md from metadata.rb}
+  s.authors       = ['Mathias Lafeldt', 'Peter Donald']
+  s.email         = %w(mathias.lafeldt@gmail.com peter@realityforge.org)
   s.summary       = s.description
   s.homepage      = 'http://mlafeldt.github.com/knife-cookbook-readme'
   s.license       = 'Apache 2.0'

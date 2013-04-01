@@ -56,12 +56,12 @@ In each LWRP, add detailed documentation such as;
 
 It should be noted that the documentation of the LWRP requires that the user
 document the actions, using `@action <action> <description>` and the attributes
-using `@attribute <attribute> <description>` so that there is meaningful
-descriptions for the actions and attributes in the generated README.
+using `@attribute <attribute> <description>`. This allows meaningful
+descriptions for the actions and attributes to be added to the README.
 
-The documentation will be added at the start of the LWRP documentation
+The other text will be added at the start of the LWRP documentation
 except if marked with `@section <heading>`, in which case it will be added
-to the head of the LWRP documentation.
+to the end of the LWRP documentation.
 
 #### Step 4
 

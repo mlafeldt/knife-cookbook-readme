@@ -66,9 +66,9 @@ to the head of the LWRP documentation.
 #### Step 4
 
 Finally the user should add some documentation fragments into the `doc/` dir.
-Most importantly you should add `doc/overview.md` which will be included at the
-start of the readme. The remaining fragments will be included at the end of the
-readme.
+Most importantly you should add `doc/overview.md` which will replace the first
+`Description` section of the readme. The remaining fragments will be included
+at the end of the readme in lexicographic order of the filename.
 
 ## Installation
 
@@ -99,15 +99,6 @@ Afterwards, the new knife command `knife cookbook doc DIR` will be available.
 
 ## Further Details
 
-The documentation is generated from the following sources;
-
-* `metadata.rb` is the source for attribute, recipe and cookbook metadata.
-* Detailed documentation for each recipe is included in comments in the recipe.
-* LWRP resource files (`resources/*.rb`) define the set of actions and attributes
-  supported by the LWRP.
-* The LWRP resource files (`resources/*.rb`) also include detailed documentation
-  about the LWRP, it's actions and it's parameters in comments.
-
 ### Documentation in comments
 
 The documentation stored in comments comes in three forms;
@@ -130,15 +121,6 @@ The documentation stored in comments comes in three forms;
     # This is some documentation
     #>
 
-This is a knife plugin to help create and maintain a README.md for a cookbook.
-The plugin uses metadata present in the `metadata.rb` file as well as the
-LWRP resource files (resources/*.rb) to generate the readme. The plugin also
-uses annotations present in the comments of the source files to collect metadata
-that is not yet exposed as code.
-
- It is also possible to include fragments
-of markdown retrieved from the doc/ directory for when the documentation can not be
-derived from the code.
 
 ## Credit
 

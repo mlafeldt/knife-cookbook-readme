@@ -67,8 +67,10 @@ to the end of the LWRP documentation.
 
 Finally the user should add some documentation fragments into the `doc/` dir.
 Most importantly you should add `doc/overview.md` which will replace the first
-`Description` section of the readme. The remaining fragments will be included
-at the end of the readme in lexicographic order of the filename.
+`Description` section of the readme. You should also add a `doc/credit.md` which
+will replace the last 'License and Maintainer' section in the readme. The
+remaining fragments will be included at the end of the readme in lexicographic
+order of the filename.
 
 ## Installation
 

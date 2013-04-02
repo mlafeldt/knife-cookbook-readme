@@ -1,3 +1,8 @@
+v0.3.0 (Apr 1 2013)
+--------------------
+
+* Replace the last section of the readme with the doc/credit.md fragment if it is present.
+
 v0.2.0 (Apr 1 2013)
 --------------------
 

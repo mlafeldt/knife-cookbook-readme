@@ -112,11 +112,16 @@
 
 <% end -%>
 <% end -%>
-<% fragments.keys.select {|k|k != 'overview'}.each do |key| -%>
+<% fragments.keys.select {|k|k != 'overview' && k != 'credit'}.each do |key| -%>
 <%= fragments[key] %>
+
 <% end -%>
+<% unless fragments['credit'] -%>
 # License and Maintainer
 
 Maintainer:: <%= maintainer %> (<<%= maintainer_email %>>)
 
 License:: <%= license %>
+<% else -%>
+<%= fragments['credit'] -%>
+<% end -%>

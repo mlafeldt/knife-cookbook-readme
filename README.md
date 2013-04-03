@@ -21,7 +21,7 @@ compatibility and cookbook requirements (i.e. depends, recommends, suggests etc)
 
 #### Step 2
 
-At the top of each cookbook, add a detailed documentation section such as;
+At the top of each recipe, add a detailed documentation section such as;
 
     =begin
     #<

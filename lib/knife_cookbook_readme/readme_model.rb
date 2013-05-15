@@ -7,6 +7,10 @@ module KnifeCookbookReadme
       @constraints = constraints
     end
 
+    def title
+      "#{@metadata.name.capitalize} Cookbook"
+    end
+
     def description
       @metadata.description
     end

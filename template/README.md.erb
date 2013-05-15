@@ -1,12 +1,12 @@
-Description
-===========
+<%= title %>
+<%= '=' * title.length %>
 
 <%= description %>
 
 Requirements
-============
+------------
 
-## Platform:
+### Platform:
 
 <% unless platforms.empty? %>
 <% platforms.each do |platform| %>
@@ -16,7 +16,7 @@ Requirements
 *No platforms defined*
 <% end %>
 
-## Cookbooks:
+### Cookbooks:
 
 <% unless dependencies.empty? %>
 <% dependencies.each do |cookbook| %>
@@ -27,7 +27,7 @@ Requirements
 <% end %>
 
 Attributes
-==========
+----------
 
 <% unless attributes.empty? %>
 <table>
@@ -49,11 +49,11 @@ Attributes
 <% end %>
 
 Recipes
-=======
+-------
 
 <% unless recipes.empty? %>
 <% recipes.each do |recipe, description| %>
-## <%= recipe %>
+### <%= recipe %>
 
 <%= description %>
 
@@ -63,7 +63,7 @@ Recipes
 <% end %>
 
 License and Author
-==================
+------------------
 
 Author:: <%= author %> (<<%= author_email %>>)
 

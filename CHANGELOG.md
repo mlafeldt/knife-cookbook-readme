@@ -1,3 +1,11 @@
+v0.1.2 (Jul 17 2013)
+--------------------
+
+* Add title to generated README and decrease level of headings.
+* Rename "templates" directory to "template".
+* Add alternative Chef documentation tools to README.
+* Remove Gemfile.lock.
+
 v0.1.1 (Feb 20 2013)
 --------------------
 

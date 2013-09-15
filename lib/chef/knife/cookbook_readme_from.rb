@@ -4,9 +4,9 @@ require 'pathname'
 module KnifeCookbookReadme
   class CookbookReadmeFrom < Chef::Knife
     deps do
-      require 'chef/cookbook/metadata'
-      require 'erubis'
-      require 'knife_cookbook_readme/readme_model'
+      require 'knife_cookbook_readme/metadata'
+      require 'knife_cookbook_readme/readme'
+      require 'knife_cookbook_readme/template'
     end
 
     banner 'knife cookbook readme from FILE (options)'
@@ -26,18 +26,19 @@ module KnifeCookbookReadme
            :description => 'Set template file used to render README.md'
 
     def run
-      unless (metadata_file = name_args.first)
+      metadata_file = name_args.first
+      template_file = config[:template_file]
+      constraints   = config[:constraints]
+
+      unless metadata_file
         ui.fatal 'Please provide metadata.rb file as argument'
-        exit(1)
+        exit 1
       end
 
-      metadata = Chef::Cookbook::Metadata.new
-      metadata.from_file(metadata_file)
-
-      model = ReadmeModel.new(metadata, config[:constraints])
-      template = File.read(config[:template_file])
-      eruby = Erubis::Eruby.new(template)
-      result = eruby.result(model.get_binding)
+      metadata = Metadata.from_file(metadata_file)
+      template = File.read(template_file)
+      readme = Readme.new(metadata, constraints)
+      result = readme.render(template)
 
       ui.output(result)
     end

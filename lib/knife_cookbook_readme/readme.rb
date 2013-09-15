@@ -1,5 +1,5 @@
 module KnifeCookbookReadme
-  class ReadmeModel
+  class Readme
     DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 
     def initialize(metadata, constraints=false)
@@ -54,8 +54,8 @@ module KnifeCookbookReadme
       @metadata.license
     end
 
-    def get_binding
-      binding
+    def render(template)
+      Template.render(template, get_binding)
     end
 
     private
@@ -66,6 +66,10 @@ module KnifeCookbookReadme
       else
         name
       end
+    end
+
+    def get_binding
+      binding
     end
   end
 end

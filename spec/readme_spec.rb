@@ -1,27 +1,28 @@
-require File.expand_path("../../lib/knife_cookbook_readme/readme_model", __FILE__)
-require "erubis"
+require File.expand_path("../../lib/knife_cookbook_readme/readme", __FILE__)
+
+class Template; end
 
 module KnifeCookbookReadme
-  describe ReadmeModel do
+  describe Readme do
     it "generates title from cookbook name" do
       cookbook_name = "cats"
       metadata = double(:metadata, :name => cookbook_name)
-      model = ReadmeModel.new(metadata)
-      model.title.should == "Cats Cookbook"
+      readme = Readme.new(metadata)
+      readme.title.should == "Cats Cookbook"
     end
 
     it "generates description" do
       description = double
       metadata = double(:metadata, :description => description)
-      model = ReadmeModel.new(metadata)
-      model.description.should == description
+      readme = Readme.new(metadata)
+      readme.description.should == description
     end
 
     it "generates recipes" do
       recipes = double
       metadata = double(:metadata, :recipes => recipes)
-      model = ReadmeModel.new(metadata)
-      model.recipes.should == recipes
+      readme = Readme.new(metadata)
+      readme.recipes.should == recipes
     end
 
     it "generates cookbook attributes" do
@@ -36,8 +37,8 @@ module KnifeCookbookReadme
         }
       }
       metadata = double(:metadata, :attributes => attributes)
-      model = ReadmeModel.new(metadata)
-      model.attributes.sort.should == [
+      readme = Readme.new(metadata)
+      readme.attributes.sort.should == [
         ["node['pets']['cat']['name']", "The name of your cat", "Kitty"],
         ["node['pets']['dog']['name']", "The name of your dog", "Barf"],
       ]
@@ -51,14 +52,14 @@ module KnifeCookbookReadme
 
       it "generates platforms with version constraints" do
         constraints = true
-        model = ReadmeModel.new(metadata, constraints)
-        model.platforms.sort.should == ["Debian (= 7)", "Ubuntu (>= 10.04)"]
+        readme = Readme.new(metadata, constraints)
+        readme.platforms.sort.should == ["Debian (= 7)", "Ubuntu (>= 10.04)"]
       end
 
       it "generates platforms without version constraints" do
         constraints = false
-        model = ReadmeModel.new(metadata, constraints)
-        model.platforms.sort.should == ["Debian", "Ubuntu"]
+        readme = Readme.new(metadata, constraints)
+        readme.platforms.sort.should == ["Debian", "Ubuntu"]
       end
     end
 
@@ -66,21 +67,21 @@ module KnifeCookbookReadme
       let(:metadata) do
         dependencies = {
           "cats" => "< 1.0",
-          "dogs" => ReadmeModel::DEFAULT_CONSTRAINT,
+          "dogs" => Readme::DEFAULT_CONSTRAINT,
         }
         double(:metadata, :dependencies => dependencies)
       end
 
       it "generates dependencies with version constraints" do
         constraints = true
-        model = ReadmeModel.new(metadata, constraints)
-        model.dependencies.sort.should == ["cats (< 1.0)", "dogs"]
+        readme = Readme.new(metadata, constraints)
+        readme.dependencies.sort.should == ["cats (< 1.0)", "dogs"]
       end
 
       it "generates dependencies without version constraints" do
         constraints = false
-        model = ReadmeModel.new(metadata, constraints)
-        model.dependencies.sort.should == ["cats", "dogs"]
+        readme = Readme.new(metadata, constraints)
+        readme.dependencies.sort.should == ["cats", "dogs"]
       end
     end
 
@@ -88,54 +89,40 @@ module KnifeCookbookReadme
       it "generates author from maintainer name" do
         maintainer = double
         metadata = double(:metadata, :maintainer => maintainer)
-        model = ReadmeModel.new(metadata)
-        model.author.should == maintainer
+        readme = Readme.new(metadata)
+        readme.author.should == maintainer
       end
 
       it "generates author email from maintainer email" do
         maintainer_email = double
         metadata = double(:metadata, :maintainer_email => maintainer_email)
-        model = ReadmeModel.new(metadata)
-        model.author_email.should == maintainer_email
+        readme = Readme.new(metadata)
+        readme.author_email.should == maintainer_email
       end
 
       it "generates copyright year from current year" do
         time_now = Time.mktime(2013, 1, 1)
         Time.stub(:now).and_return(time_now)
         metadata = double
-        model = ReadmeModel.new(metadata)
-        model.copyright_year.should == time_now.year
+        readme = Readme.new(metadata)
+        readme.copyright_year.should == time_now.year
       end
       
       it "generates license name" do
         license = double
         metadata = double(:metadata, :license => license)
-        model = ReadmeModel.new(metadata)
-        model.license.should == license
+        readme = Readme.new(metadata)
+        readme.license.should == license
       end
     end
 
-    # TODO: implement ReadmeModel#render
-    context "template rendering" do
-      it "can be rendered with erubis" do
-        metadata = double(:metadata,
-                          :name => "cats",
-                          :description => "Manages a herd of cats!")
-        model = ReadmeModel.new(metadata)
-        template = <<EOS
-<%= title %>
-<%= '=' * title.length %>
-
-<%= description %>
-EOS
-        eruby = Erubis::Eruby.new(template)
-        result = eruby.result(model.get_binding)
-        result.should == <<EOS
-Cats Cookbook
-=============
-
-Manages a herd of cats!
-EOS
+    context "#render" do
+      it "calls Template.render to create README.md" do
+        template = double
+        Template.should_receive(:render).with(template, kind_of(Binding))
+        metadata = double
+        readme = Readme.new(metadata)
+        readme.render(template)
       end
     end
   end

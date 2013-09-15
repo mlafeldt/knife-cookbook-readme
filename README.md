@@ -53,7 +53,8 @@ Alternatives
 Here is a list of other documentation tools for Chef (sorted alphabetically):
 
 * [knife-cookbook-doc](https://github.com/realityforge/knife-cookbook-doc)
-  ([blog post](http://realityforge.org/code/2013/04/01/documenting-cookbooks.html))
+  (based on knife-cookbook-readme,
+  [blog post](http://realityforge.org/code/2013/04/01/documenting-cookbooks.html))
 * [yard-chef](https://github.com/rightscale/yard-chef)
 
 

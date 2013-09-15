@@ -1,3 +1,14 @@
+v0.1.3 (Sep 15 2013)
+--------------------
+
+* Add RSpec tests, including Rake task and Travis CI config.
+
+README updates:
+
+* Link to Opscode's metadata docs.
+* Say that knife-cookbook-doc is based on knife-cookbook-readme.
+* Add contributing guidelines.
+
 v0.1.2 (Jul 17 2013)
 --------------------
 

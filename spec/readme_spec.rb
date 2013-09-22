@@ -117,7 +117,7 @@ module KnifeCookbookReadme
     end
 
     context "#render" do
-      it "calls Template.render to create README.md" do
+      it "knows how to render a README.md file" do
         template = double
         Template.should_receive(:render).with(template, kind_of(Binding))
         metadata = double

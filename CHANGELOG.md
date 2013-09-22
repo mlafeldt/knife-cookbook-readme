@@ -1,3 +1,9 @@
+v0.2.0 (Sep 22 2013)
+--------------------
+
+* Split up logic into `Metadata`, `Readme`, and `Template` classes. Add specs.
+* Make `DEFAULT_CONSTRAINT` a module variable.
+
 v0.1.3 (Sep 15 2013)
 --------------------
 

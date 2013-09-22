@@ -65,10 +65,7 @@ module KnifeCookbookReadme
 
     context "cookbook dependencies" do
       let(:metadata) do
-        dependencies = {
-          "cats" => "< 1.0",
-          "dogs" => Readme::DEFAULT_CONSTRAINT,
-        }
+        dependencies = { "cats" => "< 1.0", "dogs" => DEFAULT_CONSTRAINT }
         double(:metadata, :dependencies => dependencies)
       end
 

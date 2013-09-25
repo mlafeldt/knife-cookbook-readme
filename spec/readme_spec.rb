@@ -1,6 +1,4 @@
-require_relative "../lib/knife_cookbook_readme/readme"
-
-class Template; end
+require_relative "../lib/knife_cookbook_readme"
 
 module KnifeCookbookReadme
   describe Readme do
@@ -114,12 +112,35 @@ module KnifeCookbookReadme
     end
 
     context "#render" do
-      it "knows how to render a README.md file" do
-        template = double
-        Template.should_receive(:render).with(template, kind_of(Binding))
-        metadata = double
-        readme = Readme.new(metadata)
-        readme.render(template)
+      let(:template_file) { File.expand_path("../../template/README.md.erb", __FILE__) }
+      let(:template)      { File.read(template_file) }
+      let(:fixtures_path) { File.expand_path("../fixtures", __FILE__) }
+
+      it "renders README.md for apache2 cookbook" do
+        metadata_file = File.join(fixtures_path, "apache2-metadata.rb")
+        readme_file   = File.join(fixtures_path, "apache2-README.md")
+
+        metadata = Metadata.from_file(metadata_file)
+        output = Readme.new(metadata).render(template)
+        output.should == File.read(readme_file)
+      end
+
+      it "renders README.md for git cookbook" do
+        metadata_file = File.join(fixtures_path, "git-metadata.rb")
+        readme_file   = File.join(fixtures_path, "git-README.md")
+
+        metadata = Metadata.from_file(metadata_file)
+        output = Readme.new(metadata).render(template)
+        output.should == File.read(readme_file)
+      end
+
+      it "renders README.md for mysql cookbook" do
+        metadata_file = File.join(fixtures_path, "mysql-metadata.rb")
+        readme_file   = File.join(fixtures_path, "mysql-README.md")
+
+        metadata = Metadata.from_file(metadata_file)
+        output = Readme.new(metadata).render(template)
+        output.should == File.read(readme_file)
       end
     end
   end

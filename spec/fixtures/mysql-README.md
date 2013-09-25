@@ -23,7 +23,7 @@ Requirements
 ### Cookbooks:
 
 * openssl
-* build-essential
+* build-essential (> 1.1.0)
 
 Attributes
 ----------

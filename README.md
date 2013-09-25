@@ -33,13 +33,11 @@ Usage
 
     knife cookbook readme from FILE (options)
 
-        -c, --constraints                Include version constraints for platforms and dependencies
         -t, --template FILE              Set template file used to render README.md
 
     Examples:
 
         knife cookbook readme from path/to/metadata.rb
-        knife cookbook readme from path/to/metadata.rb --constraints >README.md
         knife cookbook readme from path/to/metadata.rb --template README.md.erb
 
 

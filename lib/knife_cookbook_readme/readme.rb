@@ -2,9 +2,8 @@ module KnifeCookbookReadme
   DEFAULT_CONSTRAINT = ">= 0.0.0".freeze
 
   class Readme
-    def initialize(metadata, constraints=false)
+    def initialize(metadata)
       @metadata = metadata
-      @constraints = constraints
     end
 
     def title
@@ -61,7 +60,7 @@ module KnifeCookbookReadme
     private
 
     def format_constraint(name, version)
-      if @constraints && version != DEFAULT_CONSTRAINT
+      if version && version != DEFAULT_CONSTRAINT
         "#{name} (#{version})"
       else
         name

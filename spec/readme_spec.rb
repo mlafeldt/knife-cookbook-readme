@@ -38,7 +38,7 @@ module KnifeCookbookReadme
       }
       metadata = double(:metadata, :attributes => attributes)
       readme = Readme.new(metadata)
-      readme.attributes.sort.should == [
+      readme.attributes.should == [
         ["node['pets']['cat']['name']", "The name of your cat", "Kitty"],
         ["node['pets']['dog']['name']", "The name of your dog", "Barf"],
       ]
@@ -53,13 +53,13 @@ module KnifeCookbookReadme
       it "generates platforms with version constraints" do
         constraints = true
         readme = Readme.new(metadata, constraints)
-        readme.platforms.sort.should == ["Debian (= 7)", "Ubuntu (>= 10.04)"]
+        readme.platforms.should == ["Debian (= 7)", "Ubuntu (>= 10.04)"]
       end
 
       it "generates platforms without version constraints" do
         constraints = false
         readme = Readme.new(metadata, constraints)
-        readme.platforms.sort.should == ["Debian", "Ubuntu"]
+        readme.platforms.should == ["Debian", "Ubuntu"]
       end
     end
 
@@ -72,13 +72,13 @@ module KnifeCookbookReadme
       it "generates dependencies with version constraints" do
         constraints = true
         readme = Readme.new(metadata, constraints)
-        readme.dependencies.sort.should == ["cats (< 1.0)", "dogs"]
+        readme.dependencies.should == ["cats (< 1.0)", "dogs"]
       end
 
       it "generates dependencies without version constraints" do
         constraints = false
         readme = Readme.new(metadata, constraints)
-        readme.dependencies.sort.should == ["cats", "dogs"]
+        readme.dependencies.should == ["cats", "dogs"]
       end
     end
 

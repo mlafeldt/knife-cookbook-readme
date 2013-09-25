@@ -1,3 +1,14 @@
+v0.2.1 (Sep 25 2013)
+--------------------
+
+* Change specs for `Metadata.from_file` and `Readme#render` to run against test
+  fixtures.
+* Remove `--constraints` option. If a version constraint is specified in
+  metadata.rb, it should always be reflected in README.md.
+* Remove support for Ruby 1.8.7, which has reached end of life.
+* Use `require_relative`.
+* Add `lib/knife_cookbook_readme.rb`, which requires all lib files.
+
 v0.2.0 (Sep 22 2013)
 --------------------
 

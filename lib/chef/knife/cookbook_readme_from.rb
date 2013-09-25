@@ -4,9 +4,7 @@ require 'pathname'
 module KnifeCookbookReadme
   class CookbookReadmeFrom < Chef::Knife
     deps do
-      require 'knife_cookbook_readme/metadata'
-      require 'knife_cookbook_readme/readme'
-      require 'knife_cookbook_readme/template'
+      require 'knife_cookbook_readme'
     end
 
     banner 'knife cookbook readme from FILE (options)'

@@ -1,4 +1,4 @@
-require File.expand_path("../../lib/knife_cookbook_readme/readme", __FILE__)
+require_relative "../lib/knife_cookbook_readme/readme"
 
 class Template; end
 

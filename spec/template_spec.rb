@@ -1,4 +1,4 @@
-require File.expand_path("../../lib/knife_cookbook_readme/template", __FILE__)
+require_relative "../lib/knife_cookbook_readme/template"
 
 module KnifeCookbookReadme
   describe "Template.render" do

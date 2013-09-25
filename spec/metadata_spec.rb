@@ -1,4 +1,4 @@
-require File.expand_path("../../lib/knife_cookbook_readme/metadata", __FILE__)
+require_relative "../lib/knife_cookbook_readme/metadata"
 
 module KnifeCookbookReadme
   describe "Metadata.from_file" do

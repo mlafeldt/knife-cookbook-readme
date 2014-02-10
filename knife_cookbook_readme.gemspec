@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'erubis'
 
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec', '~> 2.14'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rubocop'
 end

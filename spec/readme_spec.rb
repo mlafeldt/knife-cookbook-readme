@@ -90,6 +90,10 @@ module KnifeCookbookReadme
       let(:template)      { File.read(template_file) }
       let(:fixtures_path) { File.expand_path("../fixtures", __FILE__) }
 
+      before(:each) do
+        Time.stub(:now).and_return(Time.new(2013, 6, 1))
+      end
+
       it "renders README.md for apache2 cookbook" do
         metadata_file = File.join(fixtures_path, "apache2-metadata.rb")
         readme_file   = File.join(fixtures_path, "apache2-README.md")

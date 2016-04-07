@@ -28,7 +28,7 @@ module KnifeCookbookReadme
 
     def attributes
       @metadata.attributes.map do |attr, options|
-        name = "node['#{attr.gsub("/", "']['")}']"
+        name = "node['#{attr.gsub(%r{(?<!\\)\/}, "']['")}']".gsub(%r{\\(?=\/)}, '')
         [name, options['description'], options['default']]
       end
     end

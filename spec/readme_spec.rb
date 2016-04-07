@@ -49,6 +49,25 @@ module KnifeCookbookReadme
       ]
     end
 
+    it "generates cookbook attributes with shash" do
+      attributes = {
+        'pets/big\/cat/name' => {
+          "description" => "The name of your big cat",
+          "default"     => "Lion",
+        },
+        'pets/wild\dog/name' => {
+          "description" => "The name of your wild dog",
+          "default"     => "Luke",
+        }
+      }
+      metadata = double(:metadata, :attributes => attributes)
+      readme = Readme.new(metadata)
+      readme.attributes.should == [
+        ["node['pets']['big/cat']['name']", "The name of your big cat", "Lion"],
+        ["node['pets']['wild\\dog']['name']", "The name of your wild dog", "Luke"],
+      ]
+    end
+
     it "generates recipes" do
       recipes = double
       metadata = double(:metadata, :recipes => recipes)

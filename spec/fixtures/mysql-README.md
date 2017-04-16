@@ -199,8 +199,8 @@ Performs EC2-specific mountpoint manipulation
 License and Author
 ------------------
 
-Author:: Opscode, Inc. (<cookbooks@opscode.com>)
+Author: Opscode, Inc. (<cookbooks@opscode.com>)
 
-Copyright:: 2013, Opscode, Inc.
+Copyright: 2013, Opscode, Inc.
 
-License:: Apache 2.0
+License: Apache 2.0

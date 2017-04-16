@@ -35,8 +35,8 @@ Provisions a system-wide Git config
 License and Author
 ------------------
 
-Author:: Mathias Lafeldt (<mathias.lafeldt@gmail.com>)
+Author: Mathias Lafeldt (<mathias.lafeldt@gmail.com>)
 
-Copyright:: 2013, Mathias Lafeldt
+Copyright: 2013, Mathias Lafeldt
 
-License:: Apache 2.0
+License: Apache 2.0
